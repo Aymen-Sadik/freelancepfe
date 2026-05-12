@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0EA5E9;
+  --color-accent: #F59E0B;
+  --color-dark-bg: #0F172A;
+  --color-card-bg: #1E293B;
+  --color-success: #10B981;
+  --color-danger: #EF4444;
+  --color-text-light: #F8FAFC;
+}
+
+:root {
+  --background: #F8FAFC;
+  --foreground: #0F172A;
+  --primary: #0EA5E9;
+  --accent: #F59E0B;
+  --card: #FFFFFF;
+  --card-foreground: #0F172A;
+  --border: #E2E8F0;
+}
+
+.dark {
+  --background: #0F172A;
+  --foreground: #F8FAFC;
+  --primary: #0EA5E9;
+  --accent: #F59E0B;
+  --card: #1E293B;
+  --card-foreground: #F8FAFC;
+  --border: #334155;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+    outline: none;
+    transition-property: color, background-color, border-color;
+    transition-duration: 200ms;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .glass-dark {
+    background: rgba(0,0,0,0.2);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .text-gradient {
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  .bg-background { background-color: var(--background); }
+  .bg-card { background-color: var(--card); }
+  .text-foreground { color: var(--foreground); }
+  .text-primary { color: var(--primary); }
+  .text-accent { color: var(--accent); }
+  .text-success { color: var(--color-success); }
+  .text-danger { color: var(--color-danger); }
+  .border-border { border-color: var(--border); }
+  .border-primary { border-color: var(--primary); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(14, 165, 233, 0.2);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(14, 165, 233, 0.4);
+}
